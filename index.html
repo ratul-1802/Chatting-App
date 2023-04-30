@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Chatting</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+
+    <section class="joining-details ">
+        <div>
+            <input type="text" id="user-name" placeholder="enter username">
+        </div>
+        <div>
+            <input type="text" id="room-id" placeholder="enter room no">
+        </div>
+        <button type="submit" id="room-join">Join Room</button>
+    </section>
+
+    <section class="message_section hide">
+        <div class="logo">
+            <div>
+                <img src="/logo.jpg" alt="broken">
+                <h1>Nonstop Chatting</h1>
+            </div>
+            <div>
+                <h1 id="room"></h1>
+            </div>
+
+        </div>
+        <div class="message_area">
+            <!-- <div class="incoming message">
+            </div>
+            <div class="outgoing message">
+            </div> -->
+        </div>
+        <div class="sent-msgs">
+            <textarea  id="textarea" cols="30" rows="1" placeholder="write a message..."></textarea>
+            <button class="send" >Send</button>
+        </div>
+        
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/client.js"></script>
+</body>
+</html>
