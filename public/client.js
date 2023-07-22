@@ -11,7 +11,7 @@ let txt=document.querySelector("#textarea");
 let room=document.querySelector("#room");
 let message_area=document.querySelector(".message_area");
 let message_section=document.querySelector(".message_section");
-let joining_details=document.querySelector('.joining-details');
+let joining_details=document.querySelector('.container');
 room_join.addEventListener('click',(e)=>{
     name=user_name.value;
     id=room_id.value;
@@ -19,7 +19,7 @@ room_join.addEventListener('click',(e)=>{
         joining_details.classList.toggle('hide');
         message_section.classList.toggle('hide');
         socket.emit('joinroom',id);
-        room.innerHTML=`Room No:${id}`;
+        room.innerHTML=`Room No: ${id}`;
     }
 })
 // txt.addEventListener("keyup",(e)=>{
