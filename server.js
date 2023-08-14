@@ -1,4 +1,5 @@
 //creating server
+const { log } = require('console');
 const express=require('express');
 const { userInfo } = require('os');
 const app=express();
@@ -55,7 +56,14 @@ io.on('connection',(socket)=>{
         
     })
     socket.on('disconnect',()=>{
-        socket.to(room_details.get(socket.id).room_id).emit('left',room_details.get(socket.id).name);
-        console.log(`user${socket.id}disconnected`);
+        try {
+            socket.to(room_details.get(socket.id).room_id).emit('left',room_details.get(socket.id).name);
+        } catch (error) {
+            console.log(error);
+        }
+        finally{
+            console.log(`user${socket.id}disconnected`);
+        }
+        
     })
 })
