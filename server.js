@@ -51,18 +51,18 @@ io.on('connection',(socket)=>{
         socket.to(id).emit('joined',name);
         socket.emit('joined','you');
     })
-    socket.on('disconnecting',()=>{
-        console.log(`user${socket.id}disconnected`);
-        
-    })
+
     socket.on('disconnect',()=>{
+        console.log(`user ${socket.id} disconnected`);
         try {
-            socket.to(room_details.get(socket.id).room_id).emit('left',room_details.get(socket.id).name);
+            if(room_details.get(socket.id)){
+                socket.to(room_details.get(socket.id).room_id).emit('left',room_details.get(socket.id).name);
+                room_details.delete(socket.id);
+                console.log(room_details);
+            }
+            
         } catch (error) {
             console.log(error);
-        }
-        finally{
-            console.log(`user${socket.id}disconnected`);
         }
         
     })
