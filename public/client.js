@@ -18,7 +18,7 @@ room_join.addEventListener('click',(e)=>{
     if(name!=='' && id!==''){
         joining_details.classList.toggle('hide');
         message_section.classList.toggle('hide');
-        socket.emit('joinroom',id);
+        socket.emit('joinroom',id,name);
         room.innerHTML=`Room No: ${id}`;
     }
 })
@@ -28,6 +28,28 @@ room_join.addEventListener('click',(e)=>{
 //         send_msg(e.target.value);
 //     }
 // })
+
+//join room
+socket.on('joined',(name)=>{
+    let addDiv1=document.createElement('div');
+    let addDiv2=document.createElement('div');
+    addDiv1.classList.add('join_leave_container');
+    addDiv2.classList.add('join_leave');
+    addDiv2.innerHTML=`${name} joined the chat`;
+    message_area.appendChild(addDiv1);
+    addDiv1.appendChild(addDiv2);
+});
+//leave room
+socket.on('left',(name)=>{
+    let addDiv1=document.createElement('div');
+    let addDiv2=document.createElement('div');
+    addDiv1.classList.add('join_leave_container');
+    addDiv2.classList.add('join_leave');
+    addDiv2.innerHTML=`${name} left the chat`;
+    message_area.appendChild(addDiv1);
+    addDiv1.appendChild(addDiv2);
+});
+
 send.addEventListener("click",(e)=>{
     if(txt.value!=='')
     send_msg(txt.value); 

@@ -163,6 +163,22 @@ textarea {
     margin-left: auto;
 }
 
+.join_leave_container{
+    display: flex;
+    justify-content: center;
+}
+
+.join_leave{
+    color: #fff;
+    background: rgb(21, 111, 117);
+    word-break: break-all;
+    padding: 20px; 
+    border-radius: 4px; 
+    margin-bottom: 30px;
+    max-width: 200px;
+    min-width: 100px;
+}
+
 .message h1 {
     position: absolute;
     top: -20px;
